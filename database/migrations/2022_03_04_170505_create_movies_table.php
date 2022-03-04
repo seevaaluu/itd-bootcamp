@@ -19,6 +19,7 @@ class CreateMoviesTable extends Migration
             $table->string('category');
             $table->date('realize_date');
             $table->string('director');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

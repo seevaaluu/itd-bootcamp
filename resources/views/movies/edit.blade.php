@@ -14,34 +14,35 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h1>Alta de peliculas</h1>
+                <h1>Editando {{  $movie->name }}</h1>
             </div>
         </div>
         <div class="row">
-            <form method="post" action="{{ route('movies.store') }}">
+            <form method="post" action="{{ route('movies.update', $movie->id) }}">
                 @csrf
+                @method('patch')
                 <div class="mb-3">
                     <label class="form-label">Nombre</label>
-                    <input required value="{{ old('name') }}" type="text" class="form-control" name="name">
+                    <input required value="{{ $movie->name }}" type="text" class="form-control" name="name">
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Categoria</label>
-                    <input required value="{{ old('category') }}" type="text" class="form-control" name="category">
+                    <input required value="{{ $movie->category }}" type="text" class="form-control" name="category">
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Fecha de lanzamiento</label>
-                    <input required value="{{ old('realize_date') }}" type="date" class="form-control" name="realize_date">
+                    <input required value="{{ $movie->realize_date }}" type="date" class="form-control" name="realize_date">
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Director</label>
-                    <input required value="{{ old('director') }}" type="text" class="form-control" name="director">
+                    <input required value="{{ $movie->director }}" type="text" class="form-control" name="director">
                 </div>
 
                 <div class="mb-3">
-                    <button required type="submit" class="btn btn-success btn-outline"> Guardar</button>
+                    <button required type="submit" class="btn btn-success btn-outline"> Actualizar </button>
                 </div>
             </form>
         </div>

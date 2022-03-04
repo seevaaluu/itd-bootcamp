@@ -75,7 +75,10 @@ class MoviesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $movie = Movie::findOrFail($id);
+        
+        return view('movies.edit')
+            ->with('movie', $movie);
     }
 
     /**
@@ -87,7 +90,21 @@ class MoviesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            "name" => "required",
+            "category" => "required",
+            "realize_date" => "required|date",
+            "director" => "required"
+        ]);
+
+        $movie = Movie::findOrFail($id);
+        $movie->name = $request->name;
+        $movie->category = $request->category;
+        $movie->realize_date = $request->realize_date;
+        $movie->director = $request->director;
+        $movie->update();
+
+        return redirect('/movies');
     }
 
     /**
@@ -98,6 +115,9 @@ class MoviesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $movie = Movie::findOrfail($id);
+        $movie->forceDelete();
+
+        return redirect('/movies');
     }
 }

@@ -41,7 +41,16 @@
                         <td>{{ $movie->realize_date }}</td>
                         <td>{{ $movie->director }}</td>
                         <td>
-
+                            <a href="{{ route('movies.edit', $movie->id) }}" class="btn btn-outline btn-primary">
+                                Editar
+                            </a>
+                            <form method="post" action="{{ route('movies.destroy', $movie->id) }}">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-outline btn-danger">
+                                    Eliminar
+                                </button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach

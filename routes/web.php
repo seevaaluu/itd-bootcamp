@@ -21,4 +21,6 @@ Route::get('hola_mundo', function() {
     return 'Hola mundo';
 });
 
-Route::get('movies', 'MoviesController@index');
+Route::get('movies', 'MoviesController@index')->name('movies.index');
+Route::get('movies/create', 'MoviesController@create')->name('movies.create');
+Route::post('movies', 'MoviesController@store')->name('movies.store');

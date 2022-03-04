@@ -15,7 +15,7 @@ class MoviesController extends Controller
      */
     public function index()
     {
-        $movies = Movie::paginate(10);
+        $movies = Movie::orderBy('id', 'desc')->paginate(10);
 
         return view('movies.index')
         ->with('movies', $movies);
@@ -28,7 +28,7 @@ class MoviesController extends Controller
      */
     public function create()
     {
-        //
+        return view('movies.create');
     }
 
     /**
@@ -39,7 +39,21 @@ class MoviesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "name" => "required",
+            "category" => "required",
+            "realize_date" => "required|date",
+            "director" => "required"
+        ]);
+
+        $movie = new Movie;
+        $movie->name = $request->name;
+        $movie->category = $request->category;
+        $movie->realize_date = $request->realize_date;
+        $movie->director = $request->director;
+        $movie->save();
+
+        return "Se guardó con éxito";
     }
 
     /**

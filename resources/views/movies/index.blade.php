@@ -11,9 +11,15 @@
     <title>Hello, world!</title>
   </head>
   <body>
-    <h1>Peliculas</h1>
-
     <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Peliculas</h1>
+            </div>
+            <div class="col-md-6">
+                <a href="{{ route('movies.create') }}" class="btn btn-primary"> Crear </a>
+            </div>
+        </div>
         <div class="row">
             <table class="table table-collapse">
                 <thead>

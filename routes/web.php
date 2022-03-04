@@ -20,3 +20,5 @@ Route::get('/', function () {
 Route::get('hola_mundo', function() {
     return 'Hola mundo';
 });
+
+Route::get('movies', 'MoviesController@index');
